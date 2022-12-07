@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-
 def weight_average(my_list=[]):
-    avg = 0
-    size = 0
-    for tup in my_list:
-        avg += (tup[0] * tup[1])
-        size += tup[1]
-    return (avg / size)
+    if len(my_list) == 0:
+        return 0
+    return sum([mul(x[0], x[1]) for x in my_list]) / sum(x[1] for x in my_list)
+def mul(x, y):
+    return x * y
