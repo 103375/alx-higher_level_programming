@@ -18,12 +18,10 @@ class Rectangle:
 
         Args:
             width: rectangle width
-
             height: rectangle height
 
 
         """
-
 
         self.width = width
         self.height = height
