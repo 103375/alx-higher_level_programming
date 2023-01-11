@@ -1,52 +1,103 @@
-The ``1-my_list`` module
-======================
+Test for 1-my_list.py
+-------------------------------------------
 
-Using ``print_sorted``
---------------------
+case 0: import
+>>> MyList = __import__('1-my_list').MyList
+>>>
+-------------------------------------------
 
-Importing the function from the module:
-        >>> My_list = __import__("1-my_list").MyList
-		>>> my_test_list = My_list([1, 4, 2, 3, 5])
+case 1: common case
 
-Checking regular case
-        >>> print(my_test_list)
-        [1, 4, 2, 3, 5]
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>>
 
-Checking print_sorted
-		>>> my_test_list.print_sorted()
-		[1, 2, 3, 4, 5]
+-------------------------------------------
 
-Checking empty list case
-		>>> my_test_list = My_list()
-		>>> print(my_test_list)
-		[]
+case 2: not defined object
 
-Checking append element
-		>>> my_test_list.append(67)
-		>>> print(my_test_list)
-		[67]
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list2.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'my_list2' is not defined
+>>>
 
-Checking negative elements
-		>>> my_test_list = My_list([1, -90, -54, 0])
-		>>> my_test_list.print_sorted()
-		[-90, -54, 0, 1]
+-------------------------------------------
 
-Checking list with only one element
-		>>> my_test_list = My_list([90])
-		>>> my_test_list.print_sorted()
-		[90]
+case 3: passed a list
+>>> a = [1, 9, 4]
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[1, 4, 9]
+>>>
 
-Checking heritage
-		>>> issubclass(type(my_test_list), list)
-		True
+-------------------------------------------
 
-Adding a sublist
-		>>> my_test_list.append([1, 4])
-		>>> print(my_test_list)
-		[90, [1, 4]]
+case 4: empty list
 
-Sorted list with a sublist
-		>>> my_test_list.print_sorted(my_test_list)
-		Traceback (most recent call last):
-			...
-		TypeError: print_sorted() takes 1 positional argument but 2 were given
+>>> a = []
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[]
+>>>
+
+-------------------------------------------
+
+case 5: unique number
+
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[1]
+>>> print(my_list)
+[1]
+>>>
+
+-------------------------------------------
+
+case 6: same number
+
+>>> my_list2 = MyList()
+>>> my_list2.append(1)
+>>> my_list2.append(1)
+>>> my_list2.append(1)
+>>> my_list2.append(1)
+>>> my_list2.print_sorted()
+[1, 1, 1, 1]
+>>>
+
+-------------------------------------------
+
+case 7: parent object
+>>> my_list = [1, 2, 3]
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'print_sorted'
+>>>
+
+-------------------------------------------
+
+case 8: negative numbers
+
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(1)
+>>> my_list.append(-1)
+>>> my_list.append(51)
+>>> my_list.append(-5)
+>>> my_list.print_sorted()
+[-5, -1, 1, 5, 51]
+>>>
