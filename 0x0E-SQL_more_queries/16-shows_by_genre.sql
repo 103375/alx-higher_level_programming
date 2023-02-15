@@ -1,10 +1,11 @@
--- List all shows and genres linked to show from 'hbtn_0d_tvshows'
--- If show doesn't have a genre, display NULL in genre column
--- Each record should display tv_shows.title, tv_genres.name
--- Results must be sorted in ascending order by show title
--- You can only use one SELECT statement
-SELECT s.title, g.name
-FROM tv_shows s
-LEFT JOIN tv_show_genres m ON s.id = m.show_id
-LEFT JOIN tv_genres g ON m.genre_id = g.id
-ORDER BY s.title ASC;
+-- lists all shows and all genres linked to it from hbtn_0d_tvshows
+-- if the show doesn't have a genre display NULL.
+-- result is sorted in ascending order by show title and genre name
+-- record is in the form tv_show.title - tv_genres.name
+
+SELECT tv_shows.title, tv_genres.name FROM tv_shows
+LEFT OUTER JOIN tv_show_genres
+ON tv_show_genres.show_id = tv_shows.id
+LEFT OUTER JOIN tv_genres
+ON tv_genres.id = tv_show_genres.genre_id
+ORDER BY tv_shows.title ASC, tv_genres.name ASC;
